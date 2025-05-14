@@ -10,26 +10,19 @@
 </head>
 <body>
     <div class="mobile-container">
-        <!-- Header -->
+       <!-- Header -->
         <header>
-            <div class="location-bar">
-                <div class="location-selector">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <select id="location">
-                        <option value="cibingbin">Cibingbin</option>
-                        <option value="sukamaju">Sukamaju</option>
-                        <option value="sukaharja">Sukaharja</option>
-                        <option value="sindangjawa">Sindangjawa</option>
-                        <option value="citenjo">Citenjo</option>
-                    </select>
+            <div class="header-top">
+                <div class="logo">
+                    <h1>JajanAh</h1>
+                    <p>Platform jajan lewat online</p>
                 </div>
-                <div class="settings-icon" onclick="toggleSettings()">
-                    <i class="fas fa-cog"></i>
+                <div class="header-icons">
+                    <div class="cart-icon" onclick="openCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-badge" class="badge" style="display: none;">0</span>
+                    </div>
                 </div>
-            </div>
-            <div class="logo">
-                <h1>JajanAh</h1>
-                <p style="color: #fff;">Platform jajan lewat online</p>
             </div>
             <div class="search-bar">
                 <i class="fas fa-search"></i>
@@ -37,34 +30,10 @@
                 <button class="search-btn" onclick="searchFood()">Cari</button>
             </div>
         </header>
-
-        <!-- Settings Menu (Hidden by default) -->
-        <div id="settings-menu" class="settings-menu">
-            <div class="settings-header">
-                <h3>Pengaturan</h3>
-                <i class="fas fa-times" onclick="toggleSettings()"></i>
-            </div>
-            <div class="settings-options">
-                <div class="settings-option" onclick="openProfile()">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Profil</p>
-                </div>
-                <div class="settings-option" onclick="openAccount()">
-                    <i class="fas fa-user-cog"></i>
-                    <p>Akun</p>
-                </div>
-                <div class="settings-option" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <p>Logout</p>
-                </div>
-            </div>
-        </div>
-
         <!-- Promo Banner -->
         <div class="promo-banner">
             <img src="asset/img/banner.png" alt="Promo JajanAh">
         </div>
-
         <!-- Kategori -->
         <div class="categories">
             <h2>Kategori</h2>
@@ -95,7 +64,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Toko Populer -->
         <div class="popular-stores">
             <h2>Toko Populer</h2>
@@ -105,7 +73,7 @@
                         <img src="asset/img/esteh.jpg" alt="Es Teh">
                     </div>
                     <div class="store-info">
-                        <h3>Esteh Solo</h3>
+                        <h3>Esteh Enak</h3>
                         <div class="store-rating">
                             <i class="fas fa-star"></i>
                             <span>4.8</span>
@@ -130,7 +98,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Jajanan Populer -->
         <div class="popular-food">
             <h2>Jajanan Populer</h2>
@@ -164,58 +131,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- Detail Toko (Hidden by default) -->
-        <div id="store-detail" class="store-detail">
-            <div class="store-detail-header">
-                <i class="fas fa-arrow-left" onclick="closeStoreDetail()"></i>
-                <h2 id="store-detail-name">Nama Toko</h2>
-            </div>
-            <div class="store-detail-banner">
-                <img id="store-detail-image" src="" alt="Banner Toko">
-            </div>
-            <div class="store-detail-info">
-                <div class="store-detail-rating">
-                    <i class="fas fa-star"></i>
-                    <span id="store-detail-rating">4.8</span>
-                    <span class="divider">|</span>
-                    <span id="store-detail-orders">1.2rb+ pesanan</span>
-                </div>
-                <div class="store-detail-distance">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span id="store-detail-distance">0.5 km</span>
-                </div>
-            </div>
-
-            <div class="store-menu">
-                <h3>Menu</h3>
-                <div id="menu-list" class="menu-list">
-                    <!-- Menu items will be populated dynamically -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Cart (Hidden by default) -->
-        <div id="cart" class="cart">
-            <div class="cart-header">
-                <h3>Keranjang</h3>
-                <i class="fas fa-times" onclick="closeCart()"></i>
-            </div>
-            <div id="cart-items" class="cart-items">
-                <!-- Cart items will be populated dynamically -->
-            </div>
-            <div class="cart-total">
-                <p>Total:</p>
-                <p id="cart-total-price">Rp 0</p>
-            </div>
-            <a href="https://wa.me/6283157142163" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                <button class="checkout-btn">Pesan Sekarang</button>
-            </a>            
-        </div>
-
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
-            <div class="nav-item">
+            <div class="nav-item active">
                 <i class="fa-solid fa-house"></i>
                 <p>Beranda</p>
             </div>
@@ -226,326 +144,208 @@
             <div class="nav-item" onclick="openCart()">
                 <i class="fas fa-shopping-cart"></i>
                 <p>Keranjang</p>
-                <span id="cart-badge" class="badge" style="display: none;">0</span>
+                <span id="cart-badge-nav" class="badge" style="display: none;">0</span>
             </div>
-            <div class="nav-item">
-                <i class="fas fa-user"></i>
-                <p>Profil</p>
+            <div class="nav-item" onclick="openSettings()">
+                <i class="fas fa-info-circle"></i>
+                <p>Tentang</p>
             </div>
         </nav>
     </div>
+    <!-- Detail Toko (Hidden by default) -->
+    <div id="store-detail" class="store-detail">
+        <div class="store-detail-header">
+            <i class="fas fa-arrow-left" onclick="closeStoreDetail()"></i>
+            <h2 id="store-detail-name">Nama Toko</h2>
+        </div>
+        <div class="store-detail-banner">
+            <img id="store-detail-image" src="" alt="Banner Toko">
+        </div>
+        <div class="store-detail-info">
+            <div class="store-detail-rating">
+                <i class="fas fa-star"></i>
+                <span id="store-detail-rating">4.8</span>
+                <span class="divider">|</span>
+                <span id="store-detail-orders">1.2rb+ pesanan</span>
+            </div>
+            <div class="store-detail-distance">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="store-detail-distance">0.5 km</span>
+            </div>
+        </div>
+        <div class="store-menu">
+            <h3>Menu</h3>
+            <div id="menu-list" class="menu-list">
+                <!-- Menu items will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+    <!-- Cart (Hidden by default) -->
+    <div id="cart" class="cart">
+        <div class="cart-header">
+            <h3>Keranjang</h3>
+            <i class="fas fa-times" onclick="closeCart()"></i>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Cart items will be populated dynamically -->
+        </div>
+        <div class="cart-total">
+            <p>Total:</p>
+            <p id="cart-total-price">Rp 0</p>
+        </div>
+        <button class="checkout-btn" id="checkout-button" onclick="proceedToCheckout()">Pesan Sekarang</button>
+    </div>
+    <!-- Checkout Screen -->
+    <div id="checkout-screen" class="checkout-screen">
+        <div class="checkout-header">
+            <i class="fas fa-arrow-left" onclick="backToCart()"></i>
+            <h3>Checkout Pesanan</h3>
+        </div>
+        
+        <div class="checkout-items" id="checkout-items">
+            <!-- Checkout items will be populated dynamically -->
+        </div>
+        
+        <div class="delivery-details">
+            <h4>Detail Pengiriman</h4>
+            
+            <div class="form-group">
+                <label for="customer-name">Nama Lengkap</label>
+                <input type="text" id="customer-name" placeholder="Masukkan nama lengkap">
+            </div>
+            
+            <div class="form-group">
+                <label for="customer-phone">Nomor Telepon</label>
+                <input type="tel" id="customer-phone" placeholder="Contoh: 08123456789">
+            </div>
+            
+            <div class="form-group">
+                <label for="customer-location">Desa</label>
+                <select id="customer-location">
+                    <option value="">Pilih Desa</option>
+                    <option value="Cibingbin">Cibingbin</option>
+                    <option value="Sukamaju">Sukamaju</option>
+                    <option value="Sukaharja">Sukaharja</option>
+                    <option value="Sindangjawa">Sindangjawa</option>
+                    <option value="Citenjo">Citenjo</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="customer-address">Alamat Lengkap</label>
+                <textarea id="customer-address" rows="3" placeholder="Masukkan alamat lengkap (RT/RW, Jalan, dll)"></textarea>
+            </div>
+        </div>
+        
+        <div class="delivery-cost">
+            <div class="summary-row">
+                <span>Ongkos Kirim</span>
+                <span id="delivery-fee">Rp 0</span>
+            </div>
+        </div>
+        
+        <div class="order-summary">
+            <h4>Ringkasan Pesanan</h4>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="checkout-subtotal">Rp 0</span>
+            </div>
+            <div class="summary-row">
+                <span>Ongkos Kirim</span>
+                <span id="checkout-delivery">Rp 0</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="checkout-total">Rp 0</span>
+            </div>
+        </div>
+        
+        <button class="confirm-order-btn" onclick="confirmOrder()">Konfirmasi Pesanan</button>
+    </div>
+    <!-- About Screen (formerly Settings Screen) -->
+    <div id="settings-screen" class="settings-screen" style="display: none;">
+        <div class="settings-header">
+            <i class="fas fa-arrow-left" onclick="closeSettings()"></i>
+            <h3>Tentang Aplikasi</h3>
+        </div>
+        <div class="about-content">
+            <div class="app-logo">
+                <img src="asset/img/logo.png" alt="JajanAh Logo">
+            </div>
+            <h2>JajanAh</h2>
+            <p class="version">Versi 1.0.0</p>
+            <p class="description">
+                JajanAh adalah platform pemesanan makanan dan minuman online yang memudahkan Anda memesan jajanan favorit dari berbagai toko di sekitar Anda. Nikmati kemudahan memesan makanan tanpa perlu registrasi atau login.
+            </p>
+            <div class="developer-info">
+                <h4>Dikembangkan oleh:</h4>
+                <p>Tim JajanAh</p>
+                <p>Email: info@jajanah.id</p>
+                <p>Telepon: 0812-3456-7890</p>
+            </div>
+            <div class="location-selector">
+                <h4>Pilih Lokasi Anda:</h4>
+                <select id="location-settings" onchange="changeLocation(this.value)">
+                    <option value="cibingbin">Cibingbin</option>
+                    <option value="sukamaju">Sukamaju</option>
+                    <option value="sukaharja">Sukaharja</option>
+                    <option value="sindangjawa">Sindangjawa</option>
+                    <option value="citenjo">Citenjo</option>
+                </select>
+            </div>
+            <div class="help-support">
+                <h4>Bantuan & Dukungan</h4>
+                <div class="settings-option" onclick="showFAQ()">
+                    <i class="fas fa-question-circle"></i>
+                    <p>FAQ</p>
+                </div>
+                <div class="settings-option" onclick="contactSupport()">
+                    <i class="fas fa-headset"></i>
+                    <p>Hubungi Kami</p>
+                </div>
+                <div class="settings-option" onclick="showTerms()">
+                    <i class="fas fa-file-alt"></i>
+                    <p>Syarat & Ketentuan</p>
+                </div>
+            </div>
+            <p class="copyright">© 2023 JajanAh. Hak Cipta Dilindungi.</p>
+        </div>
+    </div>
+    <!-- JavaScript Files -->
+    <script src="asset/js/main.js"></script>
+    <script src="asset/js/store-detail.js"></script>
+    <script src="asset/js/cart.js"></script>
+    <script src="asset/js/checkout.js"></script>
+    <script src="asset/js/settings.js"></script>
+    <script src="asset/js/navigation.js"></script>
+    <script src="asset/js/init.js"></script>
 
+    <!-- Add this right before the closing </body> tag -->
     <script>
-        // Data toko
-        const stores = {
-            esteh: {
-                name: "Esteh Indonesia",
-                image: "asset/img/banneresteh.jpg",
-                rating: "4.8",
-                orders: "1.2rb+",
-                distance: "0.5 km",
-                menu: [
-                    { name: "Es Teh Original", price: 8000, image: "asset/img/esteh2.png"},
-                    { name: "Es Teh Susu", price: 12000, image: "asset/img/esteh2.png" },
-                    { name: "Es Teh Lemon", price: 10000, image: "asset/img/esteh2.png" },
-                    { name: "Es Jeruk", price: 10000, image: "asset/img/esteh2.png" }
-                ]
-            },
-            chicken: {
-                name: "Chicken Crisbar",
-                image: "asset/img/bannercrisbar.png",
-                rating: "4.6",
-                orders: "950+",
-                distance: "0.8 km",
-                menu: [
-                    { name: "Ayam Crispy (1 pcs)", price: 15000, image: "asset/img/crisbar.png" },
-                    { name: "Ayam Spicy (1 pcs)", price: 16000, image: "asset/img/crisbar.png" },
-                    { name: "Chicken Strips", price: 20000, image: "asset/img/crisbar.png" },
-                    { name: "Paket Nasi + Ayam", price: 25000, image: "asset/img/crisbar.png" }
-                ]
-            }
-        };
-
-        // Keranjang belanja
-        let cartItems = [];
-        let cartTotal = 0;
-
-        // Fungsi untuk membuka detail toko
-        function openStoreDetail(storeId) {
-            const store = stores[storeId];
-            document.getElementById('store-detail-name').textContent = store.name;
-            document.getElementById('store-detail-image').src = store.image;
-            document.getElementById('store-detail-rating').textContent = store.rating;
-            document.getElementById('store-detail-orders').textContent = store.orders + " pesanan";
-            document.getElementById('store-detail-distance').textContent = store.distance;
-
-            // Populate menu
+        // Debug script to check elements
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded, checking elements");
+            
+            // Check store detail elements
+            const storeDetail = document.getElementById('store-detail');
+            const storeDetailName = document.getElementById('store-detail-name');
+            const storeDetailImage = document.getElementById('store-detail-image');
             const menuList = document.getElementById('menu-list');
-            menuList.innerHTML = '';
             
-            store.menu.forEach(item => {
-                const menuItem = document.createElement('div');
-                menuItem.className = 'menu-item';
-                menuItem.innerHTML = `
-                    <div class="menu-item-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="menu-item-info">
-                        <h4>${item.name}</h4>
-                        <p>Rp ${item.price.toLocaleString()}</p>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('${storeId}', '${item.name}', ${item.price})">+</button>
-                `;
-                menuList.appendChild(menuItem);
+            console.log("Store detail element:", storeDetail ? "Found" : "Not found");
+            console.log("Store detail name element:", storeDetailName ? "Found" : "Not found");
+            console.log("Store detail image element:", storeDetailImage ? "Found" : "Not found");
+            console.log("Menu list element:", menuList ? "Found" : "Not found");
+            
+            // Check if store cards have click handlers
+            const storeCards = document.querySelectorAll('.store-card');
+            console.log(`Found ${storeCards.length} store cards`);
+            
+            storeCards.forEach((card, index) => {
+                console.log(`Store card ${index + 1} has onclick:`, card.hasAttribute('onclick'));
             });
-
-            document.getElementById('store-detail').style.display = 'block';
-            document.querySelector('.mobile-container').style.overflow = 'hidden';
-        }
-
-        // Fungsi untuk menutup detail toko
-        function closeStoreDetail() {
-            document.getElementById('store-detail').style.display = 'none';
-            document.querySelector('.mobile-container').style.overflow = 'auto';
-        }
-
-        // Fungsi untuk menambahkan item ke keranjang
-        function addToCart(storeId, itemName, price) {
-            const existingItem = cartItems.find(item => item.name === itemName);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cartItems.push({
-                    storeId: storeId,
-                    name: itemName,
-                    price: price,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
-            openCart(); // Langsung membuka keranjang saat item ditambahkan
-            showToast(`${itemName} ditambahkan ke keranjang!`);
-        }
-
-        // Fungsi untuk memperbarui tampilan keranjang
-        function updateCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = '';
-            
-            cartTotal = 0;
-            let totalItems = 0;
-            
-            cartItems.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                cartTotal += itemTotal;
-                totalItems += item.quantity;
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <div class="cart-item-info">
-                        <h4>${item.name}</h4>
-                        <p>Rp ${item.price.toLocaleString()} x ${item.quantity}</p>
-                    </div>
-                    <div class="cart-item-actions">
-                        <button onclick="decreaseQuantity(${index})">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="increaseQuantity(${index})">+</button>
-                    </div>
-                    <div class="cart-item-total">
-                        <p>Rp ${itemTotal.toLocaleString()}</p>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(cartItem);
-            });
-            
-            document.getElementById('cart-total-price').textContent = `Rp ${cartTotal.toLocaleString()}`;
-            
-            // Update badge
-            const cartBadge = document.getElementById('cart-badge');
-            if (totalItems > 0) {
-                cartBadge.textContent = totalItems;
-                cartBadge.style.display = 'flex';
-            } else {
-                cartBadge.style.display = 'none';
-            }
-        }
-
-        // Fungsi untuk membuka keranjang
-        function openCart() {
-            document.getElementById('cart').style.display = 'block';
-            document.getElementById('cart').classList.add('cart-open');
-        }
-
-        // Fungsi untuk menutup keranjang
-        function closeCart() {
-            document.getElementById('cart').classList.remove('cart-open');
-            setTimeout(() => {
-                document.getElementById('cart').style.display = 'none';
-            }, 300);
-        }
-
-        // Fungsi untuk menambah jumlah item di keranjang
-        function increaseQuantity(index) {
-            cartItems[index].quantity += 1;
-            updateCart();
-        }
-
-        // Fungsi untuk mengurangi jumlah item di keranjang
-        function decreaseQuantity(index) {
-            if (cartItems[index].quantity > 1) {
-                cartItems[index].quantity -= 1;
-            } else {
-                cartItems.splice(index, 1);
-            }
-            updateCart();
-        }
-        
-        // Fungsi untuk toggle menu pengaturan
-        function toggleSettings() {
-            const settingsMenu = document.getElementById('settings-menu');
-            if (settingsMenu.classList.contains('show')) {
-                settingsMenu.classList.remove('show');
-            } else {
-                settingsMenu.classList.add('show');
-            }
-        }
-        
-        // Fungsi untuk menampilkan toast notification
-        function showToast(message) {
-            // Cek apakah sudah ada toast
-            let toast = document.querySelector('.toast');
-            if (!toast) {
-                toast = document.createElement('div');
-                toast.className = 'toast';
-                document.body.appendChild(toast);
-            }
-            
-            toast.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-        
-        // Fungsi pencarian
-        function searchFood() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            if (searchInput.trim() === '') {
-                showToast('Masukkan kata kunci pencarian');
-                return;
-            }
-            
-            let found = false;
-            
-            // Cari di menu toko
-            for (const storeId in stores) {
-                const store = stores[storeId];
-                const menuItems = store.menu.filter(item => 
-                    item.name.toLowerCase().includes(searchInput)
-                );
-                
-                if (menuItems.length > 0) {
-                    found = true;
-                    openStoreDetail(storeId);
-                    showToast(`Ditemukan di ${store.name}`);
-                    
-                    // Highlight item yang ditemukan
-                    setTimeout(() => {
-                        const menuElements = document.querySelectorAll('.menu-item h4');
-                        menuElements.forEach(el => {
-                            if (el.textContent.toLowerCase().includes(searchInput)) {
-                                el.parentElement.parentElement.classList.add('highlight');
-                            }
-                        });
-                    }, 300);
-                    
-                    break;
-                }
-            }
-            
-            // Cari nama toko
-            if (!found) {
-                for (const storeId in stores) {
-                    const store = stores[storeId];
-                    if (store.name.toLowerCase().includes(searchInput)) {
-                        found = true;
-                        openStoreDetail(storeId);
-                        showToast(`Toko ditemukan`);
-                        break;
-                    }
-                }
-            }
-            
-            if (!found) {
-                showToast('Tidak ditemukan hasil pencarian');
-            }
-        }
-        
-        // Fungsi untuk profil
-        function openProfile() {
-            showToast('Membuka halaman profil');
-            toggleSettings();
-        }
-        
-        // Fungsi untuk akun
-        function openAccount() {
-            showToast('Membuka pengaturan akun');
-            toggleSettings();
-        }
-        
-        // Fungsi untuk logout
-        function logout() {
-            showToast('Anda telah logout');
-            toggleSettings();
-        }
-        
-        // Event listener untuk dropdown lokasi
-        document.getElementById('location').addEventListener('change', function() {
-            const selectedLocation = this.value;
-            showToast(`Lokasi diubah ke: ${this.options[this.selectedIndex].text}`);
-        });
-        
-        // Event listener untuk pencarian dengan tombol Enter
-        document.getElementById('searchInput').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                searchFood();
-            }
-        });
-        
-        // Inisialisasi touch events untuk keranjang
-        let startY, moveY;
-        const cart = document.getElementById('cart');
-        
-        cart.addEventListener('touchstart', function(e) {
-            startY = e.touches[0].clientY;
-        });
-        
-        cart.addEventListener('touchmove', function(e) {
-            moveY = e.touches[0].clientY;
-            const diff = moveY - startY;
-            
-            // Jika digeser ke bawah
-            if (diff > 0) {
-                e.preventDefault();
-                cart.style.transform = `translateY(${diff}px)`;
-            }
-        });
-        
-        cart.addEventListener('touchend', function() {
-            const diff = moveY - startY;
-            
-            // Jika digeser cukup jauh ke bawah, tutup keranjang
-            if (diff > 100) {
-                closeCart();
-            } else {
-                // Kembalikan ke posisi semula
-                cart.style.transform = 'translateY(0)';
-            }
         });
     </script>
+
 </body>
 </html>
